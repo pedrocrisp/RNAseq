@@ -18,3 +18,21 @@ do
 	firefox "file://$(readlink -f $qc_res)" &
 done
 
+# get full path to base sample directories on
+workingdir=$(pwd)
+
+# Do trim_galore
+for sampledir in Sample_*
+do
+	# go into sample dir
+	cd ${workingdir}/${sampledir}
+
+	trim_galore \
+		-q 20 \ # min qual of 20
+		--fastqc \ # run fastqc on trimmed file
+		--length 20 \ # min length 20
+		--gzip \ # Compress the output file with GZIP
+		--paired \ # f and pared-end
+		*.fastq.gz \ # run on the *R1*.fastq.gz and *R2*.fastq.gz files
+		>./trim_galore.log 2>&1 &
+done
