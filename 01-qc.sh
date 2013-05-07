@@ -1,6 +1,15 @@
 #!/bin/bash
-# Get the number of cores to use. = num processeors - 1-min load average - 1
-nthreads=$(($(nproc) - $(uptime |grep -oP ": \d+\." |sed -e "s/^\: //" |sed -e "s/\.$//") - 1))
+# Get dir this script is stored in, so we can call others
+# FOR DEBUGGING: ScriptDir="~/Documents/pete-pipeline"
+ScriptDir="$( cd "$( dirname "$0" )" && pwd )"
+
+
+NTHREADS=1 # Default number of threads, in case we forget to updateNThreads
+function updateNThreads {
+	# Get the number of cores to use. = num processeors - 1-min load average - 1.
+	NTHREADS=$(($(nproc) - $(uptime |grep -oP ": \d+\." |sed -e "s/^\: //" |sed -e "s/\.$//") - 1))
+	echo "Can use $NTHREADS threads"
+}
 
 # enter directory containing reads
 cd /media/work/pete/Project_SN700819R_0100_PCrisp_RSB_Arabidopsis_mRNA/
@@ -9,7 +18,8 @@ cd /media/work/pete/Project_SN700819R_0100_PCrisp_RSB_Arabidopsis_mRNA/
 mkdir QC
 
 # run fastqc
-fastqc Sample_*/*.fastq.gz -o QC -t $nthreads
+updateNThreads
+fastqc Sample_*/*.fastq.gz -o QC -t $NTHREADS
 
 
 # and view the results (remember Ctrl-tab changes tabs)
@@ -22,17 +32,5 @@ done
 workingdir=$(pwd)
 
 # Do trim_galore
-for sampledir in Sample_*
-do
-	# go into sample dir
-	cd ${workingdir}/${sampledir}
-
-	trim_galore \
-		-q 20 \ # min qual of 20
-		--fastqc \ # run fastqc on trimmed file
-		--length 20 \ # min length 20
-		--gzip \ # Compress the output file with GZIP
-		--paired \ # f and pared-end
-		*.fastq.gz \ # run on the *R1*.fastq.gz and *R2*.fastq.gz files
-		>./trim_galore.log 2>&1 &
-done
+updateNThreads
+find -maxdepth 1  -type d  -name Sample_\* | parallel -j $NTHREADS bash $ScriptDir/01.1-trimgalore.sh {}
