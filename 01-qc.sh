@@ -33,4 +33,19 @@ workingdir=$(pwd)
 
 # Do trim_galore
 updateNThreads
-find -maxdepth 1  -type d  -name Sample_\* | parallel -j $NTHREADS bash $ScriptDir/01.1-trimgalore.sh {}
+# Run TG
+	# min qual of 20
+	# run fastqc on trimmed file
+	# min length 20
+	# Compress the output file with GZIP
+	# use pared-end
+	# run on the *R1*.fastq.gz and *R2*.fastq.gz files
+
+find -maxdepth 1  -type d  -name Sample_\* | parallel -j $NTHREADS "cd {}; trim_galore \
+	-q 20 \
+	--fastqc \
+	--length 20 \
+	--gzip \
+	--paired \
+	*.fastq.gz \
+	>./trim_galore.log 2>&1"
