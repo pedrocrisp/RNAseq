@@ -11,6 +11,14 @@ cd "${WSDir}/${Project}"
 mkdir "mapping"
 cd mapping
 
+NTHREADS=1 # Default number of threads, in case we forget to updateNThreads
+function updateNThreads {
+	# Get the number of cores to use. = num processeors - 1-min load average - 1.
+	NTHREADS=$(($(nproc) - $(uptime |grep -oP ": \d+\." |sed -e "s/^\: //" |sed -e "s/\.$//") - 1))
+	echo "Can use $NTHREADS threads"
+}
+
+
 # Make the Sample_* dirs in the mapping folder
 for sample in ${ProjectDir}/Sample_*
 do
@@ -21,12 +29,13 @@ do
 
 	SampleDir="${WSDir}/${Project}/${sample}"
 
+	updateNThreads
 	tophat2 \
 		-G "${RefDir}/TAIR10_gen/TAIR10_GFF3_genes_transposons.gff" \
 		--transcriptome-index "${RefDir}/TAIR10_tx_from_tophat/TAIR10_tx" \
 		--solexa-quals \
 		--library-type fr-unstranded \
-		-p 22 \
+		-p ${NTHREADS} \
 		-g 2 \
 		${RefDir}/TAIR10_gen/TAIR10 \
 		${SampleDir}/*.fq.gz | tee "./tophat${sample}.log"
