@@ -31,12 +31,13 @@ do
 
 	updateNThreads
 	tophat2 \
+		--max-intron-length 2000 \
 		-G "${RefDir}/TAIR10_gen/TAIR10_GFF3_genes_transposons.gff" \
 		--transcriptome-index "${RefDir}/TAIR10_tx_from_tophat/TAIR10_tx" \
 		--solexa-quals \
 		--library-type fr-unstranded \
 		-p ${NTHREADS} \
 		-g 2 \
-		${RefDir}/TAIR10_gen/TAIR10 \
+		${RefDir}/TAIR10_gen/TAIR10_allchr \
 		${SampleDir}/*.fq.gz | tee "./tophat${sample}.log"
 done
