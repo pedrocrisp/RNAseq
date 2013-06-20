@@ -19,15 +19,16 @@ updateNThreads
 # not strand specific
 # 
 # mode is to keep partially multimapping reads if they have a portion that unambigiously aligns (multimapped called ambugious)
+##TAIR10 parent features are 3 types - gene,transposable_element_gene,pseudogene
 	
 find -maxdepth 2  -type d  -name Sample_\* | parallel -j $NTHREADS "cd {}; htseq-count \
 	--stranded no \
 	-i ID \
-	-t gene \
+	-t transposable_element_gene \
 	-m intersection-nonempty \
 	tophat_out/accepted_hits_sorted.sam \
 	${RefDir}/TAIR10_gen/TAIR10_GFF3_genes_transposons.gff \
-	> tophat_out/accepted_hits.gene.counts \
-	>./htseq-count.log 2>&1"
+	> tophat_out/accepted_hits.transposable_element_gene.counts \
+	2>./htseq-count.errlog"
 
 
