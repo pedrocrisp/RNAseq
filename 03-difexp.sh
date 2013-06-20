@@ -73,18 +73,17 @@ function cuff () {
 
 	# do cufflinks in paralell
 	updateNThreads
-	cat "${TmpDir}/cufflinks.cmd" | parallel --files bash -c {}
+#	cat "${TmpDir}/cufflinks.cmd" | parallel --files bash -c {}
 
-
-
+	# Cuffdiff
 	cd "${WorkingDir}"
 	CuffDiffDir="cuffdiff"
 	mkdir ${CuffDiffDir} 2>/dev/null
 	updateNThreads
-	cuffdiff \
+	echo cuffdiff \
 		-p $NTHREADS \
 		-o ${CuffDiffDir} \
-		-L ${SampleLabels} \
+		-L "$(for s in Sample_BJP_317_*; do echo $s | head -c $((`echo;  done | sort -nt_ -k4,4 |uniq |tr '\n' ',' |sed -e 's/,$/\n/')"\
 		-b "$RefDir/TAIR10_gen/TAIR10_allchr.fa" \
 		-u \
 		-T \
