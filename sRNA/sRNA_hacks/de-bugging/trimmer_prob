@@ -1,0 +1,24 @@
+pete@RSBN1Workstation:~/workspace/Exp317_RRGS_sRNA/HL_analysis/raw_data$ for sample_dir in Raw_317_1_1/
+> do
+>   pushd $sample_dir || exit
+>   cutadapt \
+>     -a AGATCGGAAGAGC \
+>     -m 18 \
+>     -M 25 \
+>     -O 10\
+>     --discard-untrimmed \
+>     -o trimmed.$sample_dir.fq \
+>     -q 20 \
+>     Raw_317_*.fastq.gz \
+>   popd
+> done
+~/workspace/Exp317_RRGS_sRNA/HL_analysis/raw_data/Raw_317_1_1 ~/workspace/Exp317_RRGS_sRNA/HL_analysis/raw_data
+Traceback (most recent call last):
+  File "/usr/local/bin/cutadapt", line 10, in <module>
+    cutadapt.main()
+  File "/usr/local/lib/python2.7/dist-packages/cutadapt/scripts/cutadapt.py", line 670, in main
+    trimmed_outfile = xopen(options.output, 'w')
+  File "/usr/local/lib/python2.7/dist-packages/cutadapt/xopen.py", line 47, in xopen
+    return open(filename, mode)
+IOError: [Errno 2] No such file or directory: 'trimmed.Raw_317_1_1/.fq'
+
