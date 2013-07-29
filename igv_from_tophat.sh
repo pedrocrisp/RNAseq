@@ -10,7 +10,5 @@ mkdir $igvDirName
 find mapping/ -type d -name Sample\* | \
 	parallel \
 		mkdir -p $igvDirName/{/}/ \; \
-		samtools sort -m 3G {}/tophat_out/accepted_hits.bam $igvDirName/{/}/{/} \; \
+		samtools sort -m 3G {}/tophat_out/accepted_hits.bam $igvDirName/{/}/{/}.sorted \; \
 		samtools index $igvDirName/{/}/{/}.sorted.bam
-
-
