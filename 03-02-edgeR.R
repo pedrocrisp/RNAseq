@@ -1,3 +1,4 @@
+#!/usr/bin/R
 source("http://bioconductor.org/biocLite.R")
 # biocLite(c("edgeR")) ## UNCOMMENT TO INSTALL
 
