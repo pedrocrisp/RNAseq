@@ -1,0 +1,6 @@
+/home/pete/bin/ShortStack.pl \
+  --outdir Raw_317_2_1 \
+  --flag_file /home/pete/workspace/refseqs/TAIR10_gen/TAIR10_GFF3_genes_intergenes.flagfile \
+  #--phasesize 'all' #consider running the phasing analysis on all samples
+  /home/pete/workspace/Exp317_RRGS_sRNA/igv_bams_multi/Raw_317_2_1/Raw_317_2_1.shortstack.bam \
+  /home/pete/workspace/refseqs/TAIR10_gen/TAIR10_allchr.fa
