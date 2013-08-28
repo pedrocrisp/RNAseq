@@ -37,6 +37,7 @@ do
 		--phred33 \
 		--end-to-end \
 		--mm \
+		-a \
 		-D 20 \
 		-R 3 \
 		-N 0 \
@@ -60,5 +61,6 @@ done
 #-L reduce substring length to 10 (default 22) as these are short reads
 #-i reduce substring interval? more sensitive?
 # --score-min C,0,0 would tell bowtie2 to report only exact matches in --end-to-end mode (alignment score of 0 required which is max possible in end mode)
+#-a reports all valid alignments
 
 
