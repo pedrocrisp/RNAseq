@@ -14,8 +14,9 @@ samtools view ${input}/${sample}.sorted.bam | \
     --sortmem 50000000000
 
 ~/bin/ShortStack.pl \
-    --outdir ${output} \
+    --outdir ${output}/out \
     --flag_file ~/workspace/refseqs/TAIR10_gen/TAIR10_GFF3_genes_intergenes.flagfile \
-    #--phasesize 'all' #consider running the phasing analysis on all samples \
     ${output}/${sample}.shortstack.bam \
-    ~/workspace/refseqs/TAIR10_gen/TAIR10_allchr.fa
+    /home/pete/workspace/refseqs/TAIR10_gen/TAIR10_allchr.fa
+
+    #--phasesize 'all' #consider running the phasing analysis on all samples \

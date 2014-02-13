@@ -28,4 +28,5 @@ echo "$(getSamples)"
 ## enter steps ##
 
 mkdir -p ./log
-getSamples |parallel bash ${scriptdir}/shortstack.sh ./igv_bams_multi/{} ./shortstack/{} \>./log/{}.log 2\>\&1
+
+getSamples |parallel rm -rv ./shortstack/{} \; bash ${scriptdir}/shortstack.sh ./igv_bams_multi/{} ./shortstack/{} \>./log/shortstack/{}.log 2\>\&1
