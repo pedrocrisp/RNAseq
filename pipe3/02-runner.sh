@@ -2,17 +2,21 @@ function findSamples () {
 find reads/ -mindepth 1 -maxdepth 1 -type d  -exec basename {} \;| tr ' ' '\n'
 }
 
-mkdir qc
+###
+#user defined variables:
+workingdir=~/ps/xgames/exp277_mutants/
+###
+
+cd $workingdir
+mkdir qcd
 
 #make sure path is correct
 #pete@macpro
-findSamples | parallel bash ~/gitrepos/RNAseq/pipe3/01-fastqc.sh {}
+findSamples | parallel bash ~/gitrepos/RNAseq/pipe3/02-scythe.sh {}
 
 
 #pete@north1ws:
 #findSamples | parallel bash ~ws/fastqc.sh {}
 
-#to run got to the folder containing the reads folder:
-#cd ~/ps/xgames/exp277_mutants/
-#Then:
-#bash ~/gitrepos/RNAseq/pipe3/01-runner.sh
+#to run call runner from anywhere:
+#bash ~/gitrepos/RNAseq/pipe3/02-runner.sh

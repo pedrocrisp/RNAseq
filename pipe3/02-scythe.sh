@@ -8,7 +8,7 @@ echo "USAGE: fastqc.sh SAMPLENAME"
 fi
 
 #user to define
-refdir=
+refdir=~/ps/exp/TAIR10
 
 sample=$1
 sample_dir=reads/$sample
@@ -19,6 +19,6 @@ mkdir qc/$sample
  
 scythe \
 -p 0.1 \ # set prior to 0.1 (default 0.3)
--a {refdir}/truseq_adapters.fasta \ #adapter file
+-a {$refdir}/truseq_adapters.fasta \ #adapter file
 -o qcd/$sample \ #
 $fastqs #input
