@@ -8,11 +8,11 @@ workingdir=~/ps/xgames/exp277_mutants/
 ###
 
 cd $workingdir
-mkdir reads_scythe
+mkdir reads_scythe_seqtk
 
 #make sure path is correct
 #pete@macpro
-findSamples | parallel bash ~/gitrepos/RNAseq/pipe3/02-scythe.sh {}
+findSamples | parallel bash ~/gitrepos/RNAseq/pipe3/03-seqtk.sh {}
 
 
 #pete@north1ws:

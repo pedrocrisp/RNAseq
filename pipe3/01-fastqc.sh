@@ -12,6 +12,6 @@ sample_dir=reads/$sample
  
 fastqs="$(ls $sample_dir/*.fastq.gz)"
  
-mkdir qc/$sample
+mkdir qc_raw/$sample
  
-fastqc -o qc/$sample $fastqs
+fastqc -o qc_raw/$sample $fastqs

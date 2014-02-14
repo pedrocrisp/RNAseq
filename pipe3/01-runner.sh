@@ -2,7 +2,7 @@ function findSamples () {
 find reads/ -mindepth 1 -maxdepth 1 -type d  -exec basename {} \;| tr ' ' '\n'
 }
 
-mkdir qc
+mkdir qc_raw
 
 #make sure path is correct
 #pete@macpro

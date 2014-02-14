@@ -15,14 +15,14 @@ sample_dir=reads/$sample
  
 fastqs="$(ls $sample_dir/*.fastq.gz)"
  
-mkdir reads_scythe/$sample
+mkdir qcd/$sample
 
 for fq in $fastqs
 do
 #fqname="$(basename $fq)"
 #sample=$(basename $output)
 fqname="$(basename $fq)"
-outputFile="reads_scythe/$sample/${fqname%%.*}.noadapt.fq.gz"
+outputFile="reads_scythe_seqtk/$sample/${fqname%%.*}.noadapt.fq.gz"
 scythe \
 -p 0.1 \
 -a ${refdir}/truseq_adapters.fasta \
