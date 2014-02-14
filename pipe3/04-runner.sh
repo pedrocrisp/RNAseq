@@ -2,7 +2,7 @@ function findSamples () {
 find reads_scythe_seqtk/ -mindepth 1 -maxdepth 1 -type d  -exec basename {} \;| tr ' ' '\n'
 }
 
-mkdir qc_reads_scythe_seqtk
+mkdir reads_scythe_seqtk_qc
 
 #make sure path is correct
 #pete@macpro

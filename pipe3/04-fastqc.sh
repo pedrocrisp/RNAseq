@@ -12,6 +12,6 @@ sample_dir=reads/$sample
  
 fastqs="$(ls $sample_dir/*.fq)"
  
-mkdir qc_reads_scythe_seqtk/$sample
+mkdir reads_scythe_seqtk_qc/$sample
  
-fastqc -o qc_reads_scythe_seqtk/$sample $fastqs
+fastqc -o reads_scythe_seqtk_qc/$sample $fastqs
