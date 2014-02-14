@@ -9,9 +9,6 @@ mkdir qc
 findSamples | parallel bash ~/gitrepos/RNAseq/pipe3/01-fastqc.sh {}
 
 
-#pete@north1ws:
-#findSamples | parallel bash ~ws/fastqc.sh {}
-
 #to run got to the folder containing the reads folder:
 #cd ~/ps/xgames/exp277_mutants/
 #Then:
