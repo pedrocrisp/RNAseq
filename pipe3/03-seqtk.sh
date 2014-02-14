@@ -19,18 +19,10 @@ mkdir qcd/$sample
 
 for fq in $fastqs
 do
-#fqname="$(basename $fq)"
-#sample=$(basename $output)
 fqname="$(basename $fq)"
-outputFile="reads_scythe_seqtk/$sample/${fqname%%.*}.noadapt.fq.gz"
-scythe \
--p 0.1 \
--a ${refdir}/truseq_adapters.fasta \
+outputFile="reads_scythe_seqtk/$sample/${fqname%%.*}.trimmed.fq"
+seqtk trimfq \
 $fq \
 >$outputFile
 done
 
-# -p set prior to 0.1 default 0.3
-# -a adapter file
-# -o output file
-#input

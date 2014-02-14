@@ -19,8 +19,6 @@ mkdir reads_scythe/$sample
 
 for fq in $fastqs
 do
-#fqname="$(basename $fq)"
-#sample=$(basename $output)
 fqname="$(basename $fq)"
 outputFile="reads_scythe/$sample/${fqname%%.*}.noadapt.fq.gz"
 scythe \

@@ -10,8 +10,8 @@ fi
 sample=$1
 sample_dir=reads/$sample
  
-fastqs="$(ls $sample_dir/*.fastq.gz)"
+fastqs="$(ls $sample_dir/*.fq)"
  
-mkdir qc_raw/$sample
+mkdir qc_reads_scythe_seqtk/$sample
  
-fastqc -o qc_reads/$sample $fastqs
+fastqc -o qc_reads_scythe_seqtk/$sample $fastqs
