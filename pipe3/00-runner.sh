@@ -1,7 +1,7 @@
 ###
 #user defined variables:
-workingdir=~/alx_test
-scriptfile=~/bec_pipeline/pipe3/00-cat.sh
+workingdir=~/ps/xgames/exp277_mutants/
+scriptfile=~/gitrepos/RNAseq/pipe3/00-cat.sh
 ###
 
 function findSamples () {
@@ -13,4 +13,5 @@ cd $workingdir
 findSamples | parallel bash $scriptfile
 
 #To run:
-#bash ~/bec_pipeline/pipe3/00-runner.sh
+#bash ~/path_to/00-runner.sh
+#bash ~/path_to/00-runner.sh
