@@ -1,22 +1,25 @@
+###
+#user defined variables:
+workingdir=~/ps/xgames/exp277_mutants/
+script=~/gitrepos/RNAseq/pipe3/02-scythe.sh
+outdir=reads_fastqc
+###
+
 function findSamples () {
 find reads/ -mindepth 1 -maxdepth 1 -type d  -exec basename {} \;| tr ' ' '\n'
 }
 
-###
-#user defined variables:
-workingdir=~/ps/xgames/exp277_mutants/
-###
-
 cd $workingdir
-mkdir reads_scythe
+mkdir $outdir
+timestamp=$(date +%Y%m%d-%H%M%S)
 
-#make sure path is correct
-#pete@macpro
-findSamples | parallel bash ~/gitrepos/RNAseq/pipe3/02-scythe.sh {}
+logdir="./logs/${outdir}.${timestamp}"
+mkdir $logdir
 
+cat $script > "$logdir/script.log"
+cat $script
 
-#pete@north1ws:
-#findSamples | parallel bash ~ws/fastqc.sh {}
+findSamples | parallel bash $script {} \>logs/${outdir}.${timestamp}/{}.log 2\>\&1
 
-#to run call runner from anywhere:
-#bash ~/gitrepos/RNAseq/pipe3/02-runner.sh
+#To run:
+#bash ~/path_to/02-scythe.sh
