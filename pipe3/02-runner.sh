@@ -2,7 +2,7 @@
 #user defined variables:
 workingdir=~/ps/xgames/exp277_mutants/
 script=~/gitrepos/RNAseq/pipe3/02-scythe.sh
-outdir=reads_fastqc
+outdir=reads_scythe
 ###
 
 function findSamples () {
