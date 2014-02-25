@@ -2,6 +2,7 @@
 #user defined variables:
 workingdir=~/ps/xgames/exp277_mutants/
 script=~/gitrepos/RNAseq/pipe3/02-scythe.sh
+runner=~/gitrepos/RNAseq/pipe3/02-runner.sh
 outdir=reads_scythe
 ###
 
@@ -17,9 +18,10 @@ logdir="./logs/${outdir}.${timestamp}"
 mkdir $logdir
 
 cat $script > "$logdir/script.log"
+cat $runner > "$logdir/runner.log"
 cat $script
 
 findSamples | parallel bash $script {} \>logs/${outdir}.${timestamp}/{}.log 2\>\&1
 
 #To run:
-#bash ~/path_to/02-scythe.sh
+#bash ~/path_to/02-runner.sh
