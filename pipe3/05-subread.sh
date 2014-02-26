@@ -9,15 +9,15 @@ refdir=~/ps/exp/TAIR10/subread
 
 sample=$1
 sample_dir=reads_scythe_seqtk/$sample
-output=align
-#$args="-i ${refdir}/TAIR10_gen_chrc"
+outdir="align/${sample}"
+mkdir ${outdir}
  
 fastqs="$(ls $sample_dir/*.fq)"
 numFqFiles=$(echo $fastqs | wc -w)
 
-outsam="${output}/${sample}.sam"
-outbam="${output}/${sample}" # no .bam, as samtools sort -f has a bug.
-tmpbam="${output}/${RANDOM}.bam"
+outsam="${outdir}/${sample}.sam"
+outbam="${outdir}/${sample}" # no .bam, as samtools sort -f has a bug.
+tmpbam="${outdir}/${RANDOM}.bam"
 
 if [ ${numFqFiles} -eq 1 ]
 then

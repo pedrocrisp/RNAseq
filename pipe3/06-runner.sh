@@ -1,20 +1,20 @@
 ###
 #user defined variables:
 workingdir=~/ps/xgames/exp277_mutants/
-script=~/gitrepos/RNAseq/pipe3/05-subread.sh
-runner=~/gitrepos/RNAseq/pipe3/05-runner.sh
+script=~/gitrepos/RNAseq/pipe3/06-featureCounts.sh
+runner=~/gitrepos/RNAseq/pipe3/06-runner.sh
 ###
 
 function findSamples () {
-find reads_scythe_seqtk/ -mindepth 1 -maxdepth 1 -type d  -exec basename {} \;| tr ' ' '\n'
+find align/ -mindepth 1 -maxdepth 1 -type d  -exec basename {} \;| tr ' ' '\n'
 }
 
 cd $workingdir
-outdir=align
+outdir=featureCounts
 mkdir ${outdir}
 timestamp=$(date +%Y%m%d-%H%M%S)
 
-logdir="./logs/${outdir}_subread.${timestamp}"
+logdir="./logs/${outdir}.${timestamp}"
 mkdir $logdir
 
 cat $script > "$logdir/script.log"
@@ -24,4 +24,4 @@ cat $script
 findSamples | parallel bash $script {} \>logs/${outdir}_subread.${timestamp}/{}.log 2\>\&1
 
 #To run:
-#bash ~/path_to/05-runner.sh
+#bash ~/path_to/06-runner.sh
