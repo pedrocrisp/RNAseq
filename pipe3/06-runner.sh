@@ -21,7 +21,7 @@ cat $script > "$logdir/script.log"
 cat $runner > "$logdir/runner.log"
 cat $script
 
-findSamples | parallel bash $script {} \>logs/${outdir}_subread.${timestamp}/{}.log 2\>\&1
+findSamples | parallel bash $script {} \>logs/${outdir}.${timestamp}/{}.log 2\>\&1
 
 #To run:
 #bash ~/path_to/06-runner.sh

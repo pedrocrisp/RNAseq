@@ -16,8 +16,7 @@ featureCounts\
     -F SAF\
     -p\
     -C\
+    -s 1\
     -a ${refdir}/TAIR10_GFF3_genes.saf\
-    #-i $samfile
-    -s\
-    -o "$output/${sample}.counts"\
+    -o "$outdir/${sample}.counts"\
     ${sample_dir}/*.bam
