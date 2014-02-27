@@ -14,6 +14,7 @@ do
 fqname="$(basename $fq)"
 outputFile="reads_scythe_seqtk/$sample/${fqname%%.*}.trimmed.fq"
 seqtk trimfq \
+-l 0\
 $fq \
 >$outputFile
 done

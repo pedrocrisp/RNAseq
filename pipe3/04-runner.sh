@@ -1,6 +1,6 @@
 ###
 #user defined variables:
-workingdir=~/ps/xgames/exp277_mutants/
+workingdir=./
 script=~/gitrepos/RNAseq/pipe3/04-fastqc.sh
 runner=~/gitrepos/RNAseq/pipe3/04-runner.sh
 outdir=reads_scythe_seqtk_fastqc

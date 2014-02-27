@@ -1,6 +1,6 @@
 ###
 #user defined variables:
-workingdir=~/ps/xgames/exp277_mutants/
+workingdir=./
 script=~/gitrepos/RNAseq/pipe3/06-featureCounts.sh
 runner=~/gitrepos/RNAseq/pipe3/06-runner.sh
 ###
