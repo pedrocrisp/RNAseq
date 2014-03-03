@@ -1,5 +1,5 @@
 ###
-#code to make it work on osx
+#code to make it work on osx and linux
 if
 [[ $OSTYPE == darwin* ]]
 then
@@ -8,10 +8,10 @@ scriptdir="$(dirname $($readlink -f $0))"
 else
 scriptdir="$(dirname $(readlink -f $0))"
 fi
+#
 
 #user defined variables that could be changed:
 workingdir=./
-scriptdir="$(dirname $($readlink -f $0))"
 script=$scriptdir/01-fastqc.sh
 outdir=reads_fastqc
 ###
