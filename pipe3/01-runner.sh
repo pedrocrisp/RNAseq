@@ -2,7 +2,11 @@
 #code to make it work on osx
 if
 [[ $OSTYPE == darwin* ]]
-then readlink=$(which greadlink)
+then
+readlink=$(which greadlink)
+scriptdir="$(dirname $($readlink -f $0))"
+else
+scriptdir="$(dirname $(readlink -f $0))"
 fi
 
 #user defined variables that could be changed:
