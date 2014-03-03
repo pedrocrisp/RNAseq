@@ -1,7 +1,14 @@
 ###
+#code to make it work on osx
+if
+[[ $OSTYPE == darwin* ]]
+then readlink=$(which greadlink)
+fi
+
 #user defined variables that could be changed:
 workingdir=./
-script=~/gitrepos/RNAseq/pipe3/01-fastqc.sh
+scriptdir="$(dirname $($readlink -f $0))"
+script=$scriptdir/01-fastqc.sh
 outdir=reads_fastqc
 ###
 
