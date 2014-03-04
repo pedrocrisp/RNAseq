@@ -19,8 +19,8 @@ fi
 pushd "$sample_dir"
     rev_reads=*R2*.fastq.gz
     fwd_reads=*R1*.fastq.gz
-    gunzip -c $rev_reads>${sample}.R2.fastq
-    gunzip -c $fwd_reads>${sample}.R1.fastq
+    gunzip -c $rev_reads>${sample}_R2.fastq
+    gunzip -c $fwd_reads>${sample}_R1.fastq
 
     rm *.fastq.gz
 
