@@ -27,7 +27,7 @@ logdir="./logs/${outdir}_subread.${timestamp}"
 mkdir $logdir
 
 cat $script > "$logdir/script.log"
-cat $09 > "$logdir/runner.log"
+cat $0 > "$logdir/runner.log"
 cat $script
 
 findSamples | parallel bash $script {} \>logs/${outdir}_subread.${timestamp}/{}.log 2\>\&1
