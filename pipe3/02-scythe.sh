@@ -2,11 +2,6 @@
 set -e
 set -x
 
-###
-#user to define
-refdir=/Users/u4010132/ps/exp/TAIR10
-###
-
 sample=$1
 sample_dir=reads/$sample
  
@@ -20,7 +15,7 @@ fqname="$(basename $fq)"
 outputFile="reads_scythe/$sample/${fqname%%.*}.noadapt.fq.gz"
 scythe \
 -p 0.1 \
--a ${refdir}/truseq_adapters.fasta \
+-a truseq_adapters.fasta \
 $fq \
 >$outputFile
 done

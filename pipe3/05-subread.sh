@@ -3,9 +3,9 @@ set -e
 set -x
 
 ###
-#user defined variables
-refdir=~/ps/exp/TAIR10/subread
-
+#reference sequence directory variable - user should create a link in working dir to the location of the "subread_refdir"
+refdir=subread_refdir
+#
 
 sample=$1
 sample_dir=reads_scythe_seqtk/$sample
