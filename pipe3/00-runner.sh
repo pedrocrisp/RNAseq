@@ -1,7 +1,18 @@
 ###
-#user defined variables:
+#code to make it work on osx and linux
+if
+[[ $OSTYPE == darwin* ]]
+then
+readlink=$(which greadlink)
+scriptdir="$(dirname $($readlink -f $0))"
+else
+scriptdir="$(dirname $(readlink -f $0))"
+fi
+#
+
+#user defined variables that could be changed:
 workingdir=./
-script=~/gitrepos/RNAseq/pipe3/00-cat.sh
+script=$scriptdir/00-cat.sh
 ###
 
 function findSamples () {
