@@ -2,6 +2,20 @@
 set -e
 set -x
 
+###
+#code to make it work on osx and linux
+if
+[[ $OSTYPE == darwin* ]]
+then
+readlink=$(which greadlink)
+scriptdir="$(dirname $($readlink -f $0))"
+else
+scriptdir="$(dirname $(readlink -f $0))"
+fi
+#
+
+adapterfile="$scriptdir/truseq_adapters.fasta"
+
 sample=$1
 sample_dir=reads/$sample
  
@@ -15,7 +29,7 @@ fqname="$(basename $fq)"
 outputFile="reads_scythe/$sample/${fqname%%.*}.noadapt.fq.gz"
 scythe \
 -p 0.1 \
--a truseq_adapters.fasta \
+-a $adapterfile \
 $fq \
 >$outputFile
 done
