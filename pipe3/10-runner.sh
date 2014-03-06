@@ -12,7 +12,7 @@ fi
 
 #user defined variables that could be changed:
 workingdir=./
-script=$scriptdir/00-cat.sh
+script=$scriptdir/10-cat.sh
 ###
 
 function findSamples () {
