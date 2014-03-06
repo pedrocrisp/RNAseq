@@ -2,9 +2,22 @@
 set -e
 set -x
 
+
 ###
-#reference sequence directory variable - user should create a link in working dir to the location of the "subread_refdir"
-refdir=subread_refdir
+#code to make it work on osx and linux
+if
+[[ $OSTYPE == darwin* ]]
+then
+readlink=$(which greadlink)
+scriptdir="$(dirname $($readlink -f $0))"
+else
+scriptdir="$(dirname $(readlink -f $0))"
+fi
+#
+
+###
+#reference sequence directory variable - user should create a link called subread_refdir in script dir to the location of the directory containing the subread indexfiles which must have the prefix "TAIR10_gen_chrc" (chrc means we included all 7 chromosomes)
+refdir=$scriptdir/subread_refdir
 #
 
 sample=$1
