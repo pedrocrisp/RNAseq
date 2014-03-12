@@ -33,4 +33,4 @@ cat $script
 findSamples | parallel bash $script {} \>logs/${outdir}_subread.${timestamp}/{}.log 2\>\&1
 
 #To run:
-#bash ~/path_to/05-runner.sh
+#bash ~/path_to/07-runner.sh

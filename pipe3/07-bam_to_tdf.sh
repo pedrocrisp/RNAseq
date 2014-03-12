@@ -16,9 +16,8 @@ fi
 #
 
 ###
-#reference sequence directory variable - user should create a link called subread_refdir in script dir to the location of the directory containing the subread indexfiles which must have the prefix "TAIR10_gen_chrc" (chrc means we included all 7 chromosomes)
+#reference sequence directory variable - user should create a link called TAIR10_gen_chrc.genome.sizes in script dir that points to the TAIR10_gen_chrc.genome.sizes file, or put a copy in there (chrc means we included all 7 chromosomes).
 chrc.sizes=$scriptdir/TAIR10_gen_chrc.genome.sizes
-
 #
 
 sample=$1
@@ -30,4 +29,4 @@ echo "bam to bedgraph"
 genomeCoverageBed -bg -strand -ibam $sample_dir/*.bam -g $chrc.sizes > $oudir/$sample.bedgraph
 
 echo "bedgraph to binary tiled data (.tdf) file"
-igvtools $sample_dir/${sample}.bedgraph $oudir/$sample.tdf chrc.sizes
+igvtools toTDF $sample_dir/${sample}.bedgraph $oudir/$sample.tdf chrc.sizes
